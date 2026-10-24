@@ -92,6 +92,14 @@ export default function ContactPage() {
                 </a>
               </div>
 
+              {/* Office Address Block */}
+              <div>
+                <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">Office Address</p>
+                <p className="text-sm font-medium text-slate-300 leading-relaxed">
+                  Office No. 105, Dragon Mart, International City, Dubai, UAE
+                </p>
+              </div>
+
               {/* Availability Status Block */}
               <div>
                 <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">Availability</p>
