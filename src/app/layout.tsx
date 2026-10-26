@@ -11,7 +11,10 @@ export const metadata: Metadata = {
   description: "Modern web design and development using Next.js and Tailwind CSS.",
   verification: {
     other: {
-      "msvalidate.01": "YOUR_UNIQUE_CODE_HERE", // Replace with the actual code from Bing
+      "msvalidate.01": "999E1BCCAE5ED3CDB9918A2E1F1C5375", // Replace with the actual code from Bing
+
+
+      
     },
   },
 };
