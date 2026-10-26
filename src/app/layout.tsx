@@ -9,6 +9,11 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "AISHAAS | Next.js Development Services",
   description: "Modern web design and development using Next.js and Tailwind CSS.",
+  verification: {
+    other: {
+      "msvalidate.01": "YOUR_UNIQUE_CODE_HERE", // Replace with the actual code from Bing
+    },
+  },
 };
 
 export default function RootLayout({
