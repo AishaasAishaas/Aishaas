@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Allow OpenAI Search Crawler
+User-agent: OAI-SearchBot
+Allow: /
+
+# Optional: Allow GPTBot if you want OpenAI to train on your content
+User-agent: GPTBot
+Allow: /
+
+Sitemap: https://aishaas.com/sitemap.xml
