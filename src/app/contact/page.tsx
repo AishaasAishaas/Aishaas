@@ -1,12 +1,13 @@
 'use client';
 
 import { useState } from 'react';
-import { sendContactEmail } from '@/app/actions/contact'; // Adjust path if your actions folder is located elsewhere
+import { sendContactEmail } from '@/app/actions/contact';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    phone: '',
     projectType: 'Web Development',
     budget: '$1k - $3k',
     message: '',
@@ -25,6 +26,7 @@ export default function ContactPage() {
       const res = await sendContactEmail({
         name: formData.name,
         email: formData.email,
+        phone: formData.phone,
         projectType: formData.projectType,
         message: formData.message,
       });
@@ -34,6 +36,7 @@ export default function ContactPage() {
         setFormData({
           name: '',
           email: '',
+          phone: '',
           projectType: 'Web Development',
           budget: '$1k - $3k',
           message: '',
@@ -85,10 +88,10 @@ export default function ContactPage() {
               <div>
                 <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">Call / WhatsApp</p>
                 <a
-                  href="tel:+971502541388"
+                  href="tel:+971507258514"
                   className="text-sm font-medium text-[#4ade80] hover:underline hover:text-[#22c55e] transition-colors duration-200 flex items-center gap-2 group"
                 >
-                  <span>+971 50 254 1388</span>
+                  <span>+971 50 725 8514</span>
                 </a>
               </div>
 
@@ -166,6 +169,19 @@ export default function ContactPage() {
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs font-semibold uppercase text-slate-400 mb-2">
+                      Phone Number
+                    </label>
+                    <input
+                      type="tel"
+                      placeholder="+971 50 123 4567"
+                      value={formData.phone}
+                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                      className="w-full bg-slate-950/60 border border-slate-800 rounded-xl px-4 py-3 text-slate-200 text-sm focus:outline-none focus:border-[#4ade80] transition-colors"
+                    />
+                  </div>
+
                   <div>
                     <label className="block text-xs font-semibold uppercase text-slate-400 mb-2">
                       Service Needed

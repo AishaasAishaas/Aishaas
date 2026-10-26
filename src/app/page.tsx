@@ -99,10 +99,10 @@ export default function Home() {
                 Transform your online brand with our custom Next.js engineering. Schedule a direct consultation with our lead developers today.
               </p>
               <a
-                href="tel:+971502541388"
+                href="tel:+971507258514"
                 className="inline-flex items-center justify-center w-full bg-[#4ade80] hover:bg-[#34d399] text-slate-950 font-bold px-6 py-4 rounded-xl shadow-lg transition-all text-center"
               >
-                Call Directly: +971-502541388
+                Call Directly: +971-507258514
               </a>
             </div>
           </div>

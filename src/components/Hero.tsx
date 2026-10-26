@@ -162,7 +162,7 @@ export default function Hero() {
 <div ref={ctaRef} className="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
   {/* Start Project Button now triggers phone call */}
   <a
-    href="tel:+971502541388"
+    href="tel:+971507258514"
     className="w-full sm:w-auto text-center bg-[#4ade80] hover:bg-[#34d399] text-slate-950 font-bold px-8 py-4 rounded-full shadow-[0_0_25px_rgba(74,222,128,0.35)] hover:shadow-[0_0_35px_rgba(74,222,128,0.5)] transition-all transform hover:-translate-y-0.5 text-base sm:text-lg flex items-center justify-center gap-2"
   >
     <svg className="w-5 h-5 text-slate-950" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -173,7 +173,7 @@ export default function Hero() {
   
   {/* Phone Secondary Button */}
   <a
-    href="tel:+971502541388"
+    href="tel:+971507258514"
     className="w-full sm:w-auto text-center border border-slate-800 bg-slate-900/60 hover:bg-slate-800/80 backdrop-blur-md text-slate-200 font-semibold px-6 py-4 rounded-full transition-all flex items-center justify-center space-x-3 group"
   >
     <div className="w-8 h-8 rounded-full bg-slate-800 group-hover:bg-[#4ade80]/20 flex items-center justify-center transition-colors">

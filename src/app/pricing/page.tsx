@@ -156,7 +156,7 @@ export default function PricingPage() {
 
               {/* Action Button (WhatsApp Direct Link) */}
 <a
-  href={`https://wa.me/971502541388?text=${encodeURIComponent(
+  href={`https://wa.me/971507258514?text=${encodeURIComponent(
     `Hi AISHAAS! I am interested in the "${plan.title}" package (${plan.price}). Please share more details.`
   )}`}
   target="_blank"

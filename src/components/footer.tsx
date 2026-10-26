@@ -76,7 +76,7 @@ export default function Footer() {
 
               {/* WhatsApp Icon */}
               <a
-                href="https://wa.me/971502541388?text=Hello%20AISHAAS,%20I%20would%20like%20to%20inquire%20about%20your%20services."
+                href="https://wa.me/971507258514?text=Hello%20AISHAAS,%20I%20would%20like%20to%20inquire%20about%20your%20services."
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="WhatsApp"
@@ -92,7 +92,7 @@ export default function Footer() {
 
               {/* Call Now Icon */}
               <a
-                href="tel:+971502541388"
+                href="tel:+971507258514"
                 aria-label="Call Now"
                 className="group relative p-3 rounded-xl bg-slate-900/80 border border-slate-800 text-slate-400 hover:text-white transition-all duration-300 hover:-translate-y-1 hover:border-violet-500/50 hover:bg-slate-900 hover:shadow-[0_0_20px_rgba(168,85,247,0.35)]"
               >

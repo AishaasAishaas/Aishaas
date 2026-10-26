@@ -58,7 +58,7 @@ export default function Navbar() {
 
           <div className="hidden md:flex items-center pr-1">
   <a
-    href="tel:+971502541388"
+    href="tel:+971507258514"
     className="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-xs sm:text-sm font-bold text-slate-100 rounded-full group bg-gradient-to-br from-purple-600 via-violet-500 to-[#4ade80] hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] transition-all duration-300"
   >
     <span className="relative px-5 py-2 transition-all ease-in duration-200 bg-slate-950/90 rounded-full group-hover:bg-opacity-0">
