@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar"; // Adjust path if your navbar is in a different folder
 import Footer from "@/components/footer"; // Adjust path if your footer is in a different folder
+import { Analytics } from "@vercel/analytics/react"; // 1. Import Analytics
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -37,7 +38,12 @@ export default function RootLayout({
         
         {/* Global Footer */}
         <Footer />
+        <Analytics /> {/* 2. Add Analytics here */}
       </body>
     </html>
   );
 }
+
+
+
+
