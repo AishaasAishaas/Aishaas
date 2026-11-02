@@ -125,6 +125,11 @@ export default function Footer() {
                   Contact Us
                 </Link>
               </li>
+              <li>
+                <Link href="/ai-services" className="hover:text-white transition-colors">
+                  Ai Services
+                </Link>
+              </li>
             </ul>
           </div>
 

@@ -3,14 +3,16 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
+import { usePathname } from 'next/navigation';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState('Home');
+  const pathname = usePathname();
 
   const navLinks = [
     { name: 'Home', href: '/' },
-    { name: 'Pricing', href: '/pricing' },
+    { name: 'Website Pricing', href: '/pricing' },
+    { name: 'Ai Services Pricing', href: '/ai-services' }, // Matches src/app/ai-services/page.tsx
     { name: 'Contact Us', href: '/contact' },
   ];
 
@@ -35,12 +37,11 @@ export default function Navbar() {
           {/* Desktop Navigation Pills */}
           <nav className="hidden md:flex items-center bg-slate-900/60 border border-slate-800/60 rounded-full px-2 py-1 space-x-1">
             {navLinks.map((link) => {
-              const isActive = activeTab === link.name;
+              const isActive = pathname === link.href;
               return (
                 <Link
                   key={link.name}
                   href={link.href}
-                  onClick={() => setActiveTab(link.name)}
                   className={`relative px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-300 ${
                     isActive
                       ? 'text-slate-950 font-semibold'
@@ -57,15 +58,15 @@ export default function Navbar() {
           </nav>
 
           <div className="hidden md:flex items-center pr-1">
-  <a
-    href="tel:+971507258514"
-    className="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-xs sm:text-sm font-bold text-slate-100 rounded-full group bg-gradient-to-br from-purple-600 via-violet-500 to-[#4ade80] hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] transition-all duration-300"
-  >
-    <span className="relative px-5 py-2 transition-all ease-in duration-200 bg-slate-950/90 rounded-full group-hover:bg-opacity-0">
-      Let's Talk
-    </span>
-  </a>
-</div>
+            <a
+              href="tel:+971507258514"
+              className="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-xs sm:text-sm font-bold text-slate-100 rounded-full group bg-gradient-to-br from-purple-600 via-violet-500 to-[#4ade80] hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] transition-all duration-300"
+            >
+              <span className="relative px-5 py-2 transition-all ease-in duration-200 bg-slate-950/90 rounded-full group-hover:bg-opacity-0">
+                Let's Talk
+              </span>
+            </a>
+          </div>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center pr-2">
@@ -94,11 +95,12 @@ export default function Navbar() {
               <Link
                 key={link.name}
                 href={link.href}
-                onClick={() => {
-                  setActiveTab(link.name);
-                  setIsOpen(false);
-                }}
-                className="block text-slate-200 hover:text-[#4ade80] hover:bg-slate-800/40 px-4 py-2 rounded-xl text-sm font-medium transition-colors"
+                onClick={() => setIsOpen(false)}
+                className={`block px-4 py-2 rounded-xl text-sm font-medium transition-colors ${
+                  pathname === link.href
+                    ? 'text-[#4ade80] bg-slate-800/60 font-bold'
+                    : 'text-slate-200 hover:text-[#4ade80] hover:bg-slate-800/40'
+                }`}
               >
                 {link.name}
               </Link>

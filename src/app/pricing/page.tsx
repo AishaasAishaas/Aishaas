@@ -96,6 +96,7 @@ export default function PricingPage() {
       ],
       popular: false,
     },
+    
   ];
 
   return (
