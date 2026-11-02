@@ -7,7 +7,7 @@ export default function PricingPage() {
       desc: "Ideal for startups and small businesses with best website needs.",
       features: [
         "✓ 1 to 4 Custom Pages",
-        "✓ Domain & Hosting",
+        "✓ Domain & Hosting For 1 Year",
         "✓ Fast Next.js & Tailwind Build",
         "✓ Responsive Mobile Layout",
         "✓ On-Page SEO & Meta Tags",
@@ -23,7 +23,7 @@ export default function PricingPage() {
       desc: "Perfect for established small businesses needing a clean web presence.",
       features: [
         "✓ 1 to 10 Custom Pages",
-        "✓ Domain & Hosting",
+        "✓ Domain & Hosting For 1 Year",
         "✓ Fast Next.js & Tailwind Build",
         "✓ Next.js App Router Architecture",
         "✓ Responsive Mobile Layout",
@@ -39,7 +39,7 @@ export default function PricingPage() {
       desc: "Our most popular package for scaling companies and agencies.",
       features: [
         "✓ 1 to 15 Custom Pages",
-        "✓ Domain & Hosting",
+        "✓ Domain & Hosting For 1 Year",
         "✓ Advanced GSAP Scroll Animations",
         "✓ High-End Glassmorphism UI Design",
         "✓ Full SEO Audit & Meta Setup",
