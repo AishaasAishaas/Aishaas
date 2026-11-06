@@ -43,7 +43,7 @@ export default function AIServicesOverviewPage() {
   // Pricing plans specifically tailored for AI services
   const aiPricingPlans = [
 {
-      title: "AI Chatbot For E-Commerce",
+      title: "AI Agent For E-Commerce",
       pages: "24/7 Support Ai Agent",
       price: "AED 149/Month",
       desc: "Custom-trained AI chatbot integrated into your store or website to handle customer inquiries & sales.",
