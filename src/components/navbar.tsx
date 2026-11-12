@@ -12,7 +12,7 @@ export default function Navbar() {
   const navLinks = [
     { name: 'Home', href: '/' },
     { name: 'Website Pricing', href: '/website-pricing' }, 
-    { name: 'Ai Services Pricing', href: '/ai-services' }, // Matches src/app/ai-services/page.tsx
+    { name: 'Ai Services Pricing', href: '/ai-services-pricing' }, // Matches src/app/ai-services/page.tsx
     { name: 'Contact Us', href: '/contact' },
   ];
 
