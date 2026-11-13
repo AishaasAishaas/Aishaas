@@ -23,11 +23,11 @@ export default function Hero() {
   const ctaRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // 1. GSAP Entrance Animations
+    // 1. GSAP Entrance Animations (animating from invisible to visible cleanly)
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: 'power4.out', duration: 1 } });
 
-      tl.fromTo(badgeRef.current, { y: 20, opacity: 0 }, { y: 0, opacity: 1 }, 0.3)
+      tl.fromTo(badgeRef.current, { y: 20, opacity: 0 }, { y: 0, opacity: 1 }, 0.2)
         .fromTo(headlineRef.current, { y: 30, opacity: 0 }, { y: 0, opacity: 1 }, '-=0.7')
         .fromTo(descRef.current, { y: 20, opacity: 0 }, { y: 0, opacity: 1 }, '-=0.7')
         .fromTo(ctaRef.current, { y: 20, opacity: 0 }, { y: 0, opacity: 1 }, '-=0.7');
@@ -50,14 +50,14 @@ export default function Hero() {
           {/* Left Column: Headline & Info */}
           <div className="lg:col-span-7 text-center lg:text-left space-y-8">
             
-            {/* Status Badge */}
-            <div ref={badgeRef} className="inline-flex items-center space-x-2 bg-slate-900/80 border border-slate-800 backdrop-blur-md rounded-full px-4 py-2 text-xs sm:text-sm font-semibold tracking-wide shadow-lg opacity-0">
+            {/* Status Badge (Removed static opacity-0) */}
+            <div ref={badgeRef} className="inline-flex items-center space-x-2 bg-slate-900/80 border border-slate-800 backdrop-blur-md rounded-full px-4 py-2 text-xs sm:text-sm font-semibold tracking-wide shadow-lg">
               <span className="w-2.5 h-2.5 rounded-full bg-[#4ade80] animate-ping" />
               <span className="text-slate-300">High Performance Web Solutions</span>
             </div>
 
-            {/* Headline */}
-            <h1 ref={headlineRef} className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.1] opacity-0">
+            {/* Headline (Removed static opacity-0) */}
+            <h1 ref={headlineRef} className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.1]">
               <span className="block text-slate-100">Next.js</span>
               <span className="inline-block my-2 bg-gradient-to-r from-[#4ade80] to-emerald-400 text-slate-950 px-5 py-1.5 rounded-2xl shadow-[0_0_30px_rgba(74,222,128,0.3)] transform -rotate-1">
                 Development
@@ -67,13 +67,13 @@ export default function Hero() {
               </span>
             </h1>
 
-            {/* Description */}
-            <p ref={descRef} className="text-slate-400 text-base sm:text-lg lg:text-xl max-w-xl mx-auto lg:mx-0 leading-relaxed opacity-0">
+            {/* Description (Removed static opacity-0) */}
+            <p ref={descRef} className="text-slate-400 text-base sm:text-lg lg:text-xl max-w-xl mx-auto lg:mx-0 leading-relaxed">
               At <strong className="text-slate-200 font-semibold">AISHAAS</strong>, we build ultra-fast, modern React & Next.js applications and websites with sleek UI design and peak SEO optimization.
             </p>
 
-            {/* CTAs */}
-            <div ref={ctaRef} className="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 opacity-0">
+            {/* CTAs (Removed static opacity-0) */}
+            <div ref={ctaRef} className="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
               {/* Start Project Button now triggers phone call */}
               <a
                 href="tel:+971507258514"
