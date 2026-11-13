@@ -126,7 +126,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/ai-services" className="hover:text-white transition-colors">
+                <Link href="/ai-services-pricing" className="hover:text-white transition-colors">
                   Ai Services Pricing
                 </Link>
               </li>
