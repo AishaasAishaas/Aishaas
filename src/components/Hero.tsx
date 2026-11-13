@@ -3,7 +3,17 @@
 import Link from 'next/link';
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
-import * as THREE from 'three';
+import dynamic from 'next/dynamic';
+
+// Dynamically import the Three.js Canvas component with SSR disabled
+const Hero3DCanvas = dynamic(() => import('./Hero3DCanvas'), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full h-[400px] sm:h-[450px] lg:h-[500px] flex items-center justify-center bg-transparent">
+      <div className="w-24 h-24 rounded-full bg-[#4ade80]/10 animate-pulse blur-md" />
+    </div>
+  ),
+});
 
 export default function Hero() {
   const heroRef = useRef<HTMLElement>(null);
@@ -11,7 +21,6 @@ export default function Hero() {
   const headlineRef = useRef<HTMLHeadingElement>(null);
   const descRef = useRef<HTMLParagraphElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
-  const canvasContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // 1. GSAP Entrance Animations
@@ -24,103 +33,8 @@ export default function Hero() {
         .fromTo(ctaRef.current, { y: 20, opacity: 0 }, { y: 0, opacity: 1 }, '-=0.7');
     }, heroRef);
 
-    // 2. Three.js Interactive 3D Crystal Dodecahedron Setup
-    const container = canvasContainerRef.current;
-    if (!container) return;
-
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(60, container.clientWidth / container.clientHeight, 0.1, 1000);
-    camera.position.z = 4;
-
-    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-    renderer.setSize(container.clientWidth, container.clientHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    container.appendChild(renderer.domElement);
-
-    // Create a high-tech Multi-layered Icosahedron (Crystal Digital Core)
-    const geometry = new THREE.IcosahedronGeometry(1.5, 1);
-    
-    // Core solid/metallic mesh
-    const material = new THREE.MeshStandardMaterial({
-      color: 0x0f172a,
-      roughness: 0.2,
-      metalness: 0.9,
-      wireframe: false,
-      emissive: 0x4ade80,
-      emissiveIntensity: 0.15,
-    });
-    const coreMesh = new THREE.Mesh(geometry, material);
-    scene.add(coreMesh);
-
-    // Outer glowing wireframe shell for high-tech cyber look
-    const wireframeGeometry = new THREE.IcosahedronGeometry(1.65, 1);
-    const wireframeMaterial = new THREE.MeshBasicMaterial({
-      color: 0x4ade80,
-      wireframe: true,
-      transparent: true,
-      opacity: 0.35,
-    });
-    const wireframeMesh = new THREE.Mesh(wireframeGeometry, wireframeMaterial);
-    scene.add(wireframeMesh);
-
-    // Add Ambient and Cinematic Point Lights
-    const ambientLight = new THREE.AmbientLight(0xffffff, 1.5);
-    scene.add(ambientLight);
-
-    const pointLight = new THREE.PointLight(0xa855f7, 6, 50);
-    pointLight.position.set(5, 5, 5);
-    scene.add(pointLight);
-
-    const pointLight2 = new THREE.PointLight(0x4ade80, 5, 50);
-    pointLight2.position.set(-5, -5, -5);
-    scene.add(pointLight2);
-
-    // Mouse movement interaction effect
-    let mouseX = 0;
-    let mouseY = 0;
-    const handleMouseMove = (e: MouseEvent) => {
-      mouseX = (e.clientX / window.innerWidth) * 2 - 1;
-      mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
-    };
-    window.addEventListener('mousemove', handleMouseMove);
-
-    // Animation Loop
-    let animationFrameId: number;
-    const animate = () => {
-      animationFrameId = requestAnimationFrame(animate);
-
-      // Smooth auto-rotation + mouse reactivity for both layers
-      coreMesh.rotation.x += 0.003 + mouseY * 0.008;
-      coreMesh.rotation.y += 0.005 + mouseX * 0.008;
-
-      wireframeMesh.rotation.x -= 0.004 + mouseY * 0.006;
-      wireframeMesh.rotation.y -= 0.006 + mouseX * 0.006;
-
-      renderer.render(scene, camera);
-    };
-    animate();
-
-    // Responsive Window Resizing
-    const handleResize = () => {
-      if (!container) return;
-      camera.aspect = container.clientWidth / container.clientHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(container.clientWidth, container.clientHeight);
-    };
-    window.addEventListener('resize', handleResize);
-
     return () => {
       ctx.revert();
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('resize', handleResize);
-      cancelAnimationFrame(animationFrameId);
-      if (container) {
-        container.removeChild(renderer.domElement);
-      }
-      geometry.dispose();
-      material.dispose();
-      wireframeGeometry.dispose();
-      wireframeMaterial.dispose();
     };
   }, []);
 
@@ -158,42 +72,38 @@ export default function Hero() {
               At <strong className="text-slate-200 font-semibold">AISHAAS</strong>, we build ultra-fast, modern React & Next.js applications and websites with sleek UI design and peak SEO optimization.
             </p>
 
-           {/* CTAs */}
-<div ref={ctaRef} className="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-  {/* Start Project Button now triggers phone call */}
-  <a
-    href="tel:+971507258514"
-    className="w-full sm:w-auto text-center bg-[#4ade80] hover:bg-[#34d399] text-slate-950 font-bold px-8 py-4 rounded-full shadow-[0_0_25px_rgba(74,222,128,0.35)] hover:shadow-[0_0_35px_rgba(74,222,128,0.5)] transition-all transform hover:-translate-y-0.5 text-base sm:text-lg flex items-center justify-center gap-2"
-  >
-    <svg className="w-5 h-5 text-slate-950" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-    </svg>
-    <span>Start Project Now</span>
-  </a>
-  
-  {/* Phone Secondary Button */}
-  <a
-    href="tel:+971507258514"
-    className="w-full sm:w-auto text-center border border-slate-800 bg-slate-900/60 hover:bg-slate-800/80 backdrop-blur-md text-slate-200 font-semibold px-6 py-4 rounded-full transition-all flex items-center justify-center space-x-3 group"
-  >
-    <div className="w-8 h-8 rounded-full bg-slate-800 group-hover:bg-[#4ade80]/20 flex items-center justify-center transition-colors">
-      <svg className="w-4 h-4 text-[#4ade80]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-      </svg>
-    </div>
-    <span>+971 50 254 1388</span>
-  </a>
-</div>
+            {/* CTAs */}
+            <div ref={ctaRef} className="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 opacity-0">
+              {/* Start Project Button now triggers phone call */}
+              <a
+                href="tel:+971507258514"
+                className="w-full sm:w-auto text-center bg-[#4ade80] hover:bg-[#34d399] text-slate-950 font-bold px-8 py-4 rounded-full shadow-[0_0_25px_rgba(74,222,128,0.35)] hover:shadow-[0_0_35px_rgba(74,222,128,0.5)] transition-all transform hover:-translate-y-0.5 text-base sm:text-lg flex items-center justify-center gap-2"
+              >
+                <svg className="w-5 h-5 text-slate-950" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+                <span>Start Project Now</span>
+              </a>
+              
+              {/* Phone Secondary Button */}
+              <a
+                href="tel:+971507258514"
+                className="w-full sm:w-auto text-center border border-slate-800 bg-slate-900/60 hover:bg-slate-800/80 backdrop-blur-md text-slate-200 font-semibold px-6 py-4 rounded-full transition-all flex items-center justify-center space-x-3 group"
+              >
+                <div className="w-8 h-8 rounded-full bg-slate-800 group-hover:bg-[#4ade80]/20 flex items-center justify-center transition-colors">
+                  <svg className="w-4 h-4 text-[#4ade80]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                </div>
+                <span>+971 50 254 1388</span>
+              </a>
+            </div>
 
           </div>
 
-          {/* Right Column: Three.js Interactive 3D Crystal Core Canvas */}
+          {/* Right Column: Dynamic Three.js 3D Crystal Core Canvas */}
           <div className="lg:col-span-5 relative flex items-center justify-center">
-            <div className="absolute w-[300px] h-[300px] bg-gradient-to-r from-purple-500/20 to-[#4ade80]/20 rounded-full blur-[80px] pointer-events-none" />
-            <div 
-              ref={canvasContainerRef} 
-              className="w-full h-[400px] sm:h-[450px] lg:h-[500px] flex items-center justify-center cursor-grab active:cursor-grabbing"
-            />
+            <Hero3DCanvas />
           </div>
 
         </div>
