@@ -334,7 +334,7 @@ export default function Home() {
 
                 <div>
                   <div className="flex items-center justify-between mb-6">
-                    <div className="flex items-center space-x-1 text-[#4ade80]" aria-label="5 out of 5 stars">
+                    <div role="img" className="flex items-center space-x-1 text-[#4ade80]" aria-label="5 out of 5 stars">
                       {[...Array(5)].map((_, starIndex) => (
                         <span key={starIndex} className="text-sm" aria-hidden="true">★</span>
                       ))}
