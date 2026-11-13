@@ -1,8 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import { useEffect, useRef } from 'react';
-import gsap from 'gsap';
 import dynamic from 'next/dynamic';
 
 // Dynamically import the Three.js Canvas component with SSR disabled
@@ -16,30 +14,8 @@ const Hero3DCanvas = dynamic(() => import('./Hero3DCanvas'), {
 });
 
 export default function Hero() {
-  const heroRef = useRef<HTMLElement>(null);
-  const badgeRef = useRef<HTMLDivElement>(null);
-  const headlineRef = useRef<HTMLHeadingElement>(null);
-  const descRef = useRef<HTMLParagraphElement>(null);
-  const ctaRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    // 1. GSAP Entrance Animations (animating from invisible to visible cleanly)
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ defaults: { ease: 'power4.out', duration: 1 } });
-
-      tl.fromTo(badgeRef.current, { y: 20, opacity: 0 }, { y: 0, opacity: 1 }, 0.2)
-        .fromTo(headlineRef.current, { y: 30, opacity: 0 }, { y: 0, opacity: 1 }, '-=0.7')
-        .fromTo(descRef.current, { y: 20, opacity: 0 }, { y: 0, opacity: 1 }, '-=0.7')
-        .fromTo(ctaRef.current, { y: 20, opacity: 0 }, { y: 0, opacity: 1 }, '-=0.7');
-    }, heroRef);
-
-    return () => {
-      ctx.revert();
-    };
-  }, []);
-
   return (
-    <section ref={heroRef} className="relative min-h-screen flex items-center justify-center pt-32 pb-20 overflow-hidden bg-[#0b101d] text-white">
+    <section className="relative min-h-screen flex items-center justify-center pt-32 pb-20 overflow-hidden bg-[#0b101d] text-white">
       {/* Dynamic Background Glow Orbs */}
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-tr from-purple-600/20 to-indigo-600/10 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute bottom-10 right-10 w-[350px] h-[350px] bg-[#4ade80]/10 rounded-full blur-[120px] pointer-events-none" />
@@ -50,14 +26,14 @@ export default function Hero() {
           {/* Left Column: Headline & Info */}
           <div className="lg:col-span-7 text-center lg:text-left space-y-8">
             
-            {/* Status Badge (Removed static opacity-0) */}
-            <div ref={badgeRef} className="inline-flex items-center space-x-2 bg-slate-900/80 border border-slate-800 backdrop-blur-md rounded-full px-4 py-2 text-xs sm:text-sm font-semibold tracking-wide shadow-lg">
+            {/* Status Badge */}
+            <div className="inline-flex items-center space-x-2 bg-slate-900/80 border border-slate-800 backdrop-blur-md rounded-full px-4 py-2 text-xs sm:text-sm font-semibold tracking-wide shadow-lg">
               <span className="w-2.5 h-2.5 rounded-full bg-[#4ade80] animate-ping" />
               <span className="text-slate-300">High Performance Web Solutions</span>
             </div>
 
-            {/* Headline (Removed static opacity-0) */}
-            <h1 ref={headlineRef} className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.1]">
+            {/* Headline */}
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.1]">
               <span className="block text-slate-100">Next.js</span>
               <span className="inline-block my-2 bg-gradient-to-r from-[#4ade80] to-emerald-400 text-slate-950 px-5 py-1.5 rounded-2xl shadow-[0_0_30px_rgba(74,222,128,0.3)] transform -rotate-1">
                 Development
@@ -67,14 +43,13 @@ export default function Hero() {
               </span>
             </h1>
 
-            {/* Description (Removed static opacity-0) */}
-            <p ref={descRef} className="text-slate-400 text-base sm:text-lg lg:text-xl max-w-xl mx-auto lg:mx-0 leading-relaxed">
+            {/* Description */}
+            <p className="text-slate-400 text-base sm:text-lg lg:text-xl max-w-xl mx-auto lg:mx-0 leading-relaxed">
               At <strong className="text-slate-200 font-semibold">AISHAAS</strong>, we build ultra-fast, modern React & Next.js applications and websites with sleek UI design and peak SEO optimization.
             </p>
 
-            {/* CTAs (Removed static opacity-0) */}
-            <div ref={ctaRef} className="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-              {/* Start Project Button now triggers phone call */}
+            {/* CTAs */}
+            <div className="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
               <a
                 href="tel:+971507258514"
                 className="w-full sm:w-auto text-center bg-[#4ade80] hover:bg-[#34d399] text-slate-950 font-bold px-8 py-4 rounded-full shadow-[0_0_25px_rgba(74,222,128,0.35)] hover:shadow-[0_0_35px_rgba(74,222,128,0.5)] transition-all transform hover:-translate-y-0.5 text-base sm:text-lg flex items-center justify-center gap-2"
@@ -85,7 +60,6 @@ export default function Hero() {
                 <span>Start Project Now</span>
               </a>
               
-              {/* Phone Secondary Button */}
               <a
                 href="tel:+971507258514"
                 className="w-full sm:w-auto text-center border border-slate-800 bg-slate-900/60 hover:bg-slate-800/80 backdrop-blur-md text-slate-200 font-semibold px-6 py-4 rounded-full transition-all flex items-center justify-center space-x-3 group"
