@@ -1,16 +1,27 @@
 User-agent: *
 Allow: /
 
-# Allow OpenAI Search Crawler
+# Allow AI Search & Citation Crawlers (ChatGPT, Claude, Perplexity)
 User-agent: OAI-SearchBot
 Allow: /
 
-# Optional: Allow GPTBot if you want OpenAI to train on your content
-User-agent: GPTBot
+User-agent: ChatGPT-User
 Allow: /
 
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+# Optional: Block AI Training Crawlers (does NOT hurt search rankings or AI citations)
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
 Sitemap: https://aishaas.com/sitemap.xml
-
-
-
-
