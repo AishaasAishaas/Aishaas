@@ -120,14 +120,21 @@ export default function Footer() {
                   Website Pricing
                 </Link>
               </li>
-              <li>
-                <Link href="/contact" className="hover:text-white transition-colors">
-                  Contact Us
-                </Link>
-              </li>
+              
               <li>
                 <Link href="/ai-services-pricing" className="hover:text-white transition-colors">
                   Ai Services Pricing
+                </Link>
+              </li>
+
+              <li>
+                <Link href="/amazon-noon" className="hover:text-white transition-colors">
+                  Amazon & Noon Pricing
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="hover:text-white transition-colors">
+                  Contact Us
                 </Link>
               </li>
             </ul>
